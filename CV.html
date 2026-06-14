@@ -28,29 +28,30 @@
             🇫🇷 Français
         </button>
     </div>
+ 
 
+    
 <h1 style="font-family: Georgia; font-size: 45px; text-align: center; margin-bottom: 10px;">Curriculum Vitae</h1>
-    
-    <!-- Navigation -->
+   
+    <!-- Navigation with IDs -->
     <nav style="text-align: center; font-size: 36px; margin-bottom: 15px;">
-        <a href="index.html">Home Page</a> | 
-        <a href="academic_background.html">Academic Background</a> | 
-        <a href="about.html">About Me</a> | 
-        <a href="future.html">Future</a> | 
-        <a href="CV.html">CV</a>
+        <a href="index.html" id="nav-home">Home Page</a> |
+        <a href="academic_background.html" id="nav-academic">Academic Background</a> |
+        <a href="about.html" id="nav-about">About Me</a> |
+        <a href="future.html" id="nav-future">Future</a> |
+        <a href="CV.html" id="nav-cv">CV</a>
     </nav>
-    
-  
+   
     <div style="max-width: 90%; margin: 0px auto;">
-       
+      
         <!-- ==================== ENGLISH CONTENT ==================== -->
         <div id="content-en">
             <img src="CV_free.jpeg" alt="A photo of me" style="display: block; margin: 40px auto; width: 700px; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 40px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 Here you can <a href="https://luisaizpuru-vargas.github.io/Aizpuru_Luis_CV_2026.pdf" download>Download</a> the most recent version of my C.V.
             </p>
-            
+           
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 90px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 For any enquiries you can reach me at: <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
@@ -59,11 +60,11 @@
         <!-- ==================== SPANISH CONTENT ==================== -->
         <div id="content-es" style="display: none;">
             <img src="CV_free.jpeg" alt="Una foto mía" style="display: block; margin: 40px auto; width: 700px; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 40px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 Aquí puedes <a href="https://luisaizpuru-vargas.github.io/Aizpuru_Luis_CV_2026.pdf" download>descargar</a> la versión más reciente de mi currículum.
             </p>
-            
+           
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 90px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 Para cualquier consulta puedes contactarme en: <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
@@ -72,21 +73,45 @@
         <!-- ==================== FRENCH CONTENT ==================== -->
         <div id="content-fr" style="display: none;">
             <img src="CV_free.jpeg" alt="Une photo de moi" style="display: block; margin: 40px auto; width: 700px; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 40px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 Vous pouvez <a href="https://luisaizpuru-vargas.github.io/Aizpuru_Luis_CV_2026.pdf" download>télécharger</a> la version la plus récente de mon CV ici.
             </p>
-            
+           
             <p style="font-family: Arial; font-size: 28px; text-align: center; margin-top: 0; margin-right: auto; margin-bottom: 90px; margin-left: auto; max-width: 100%; text-indent: 0;">
                 Pour toute demande, vous pouvez me contacter à : <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
         </div>
-       
+      
     </div>
-   
+  
     <script>
-        // Language switcher for EN / ES / FR
+        // ==================== LANGUAGE SWITCHER + TRANSLATED NAV ====================
         let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+        const navTranslations = {
+            en: {
+                home: "Home Page",
+                academic: "Academic Background",
+                about: "About Me",
+                future: "Future",
+                cv: "CV"
+            },
+            es: {
+                home: "Página Principal",
+                academic: "Formación Académica",
+                about: "Sobre Mí",
+                future: "Futuro",
+                cv: "Currículum"
+            },
+            fr: {
+                home: "Page d'accueil",
+                academic: "Parcours académique",
+                about: "À propos de moi",
+                future: "Avenir",
+                cv: "CV"
+            }
+        };
 
         function switchLanguage(lang) {
             currentLang = lang;
@@ -95,7 +120,7 @@
             const enContent = document.getElementById('content-en');
             const esContent = document.getElementById('content-es');
             const frContent = document.getElementById('content-fr');
-            
+           
             if (enContent) enContent.style.display = 'none';
             if (esContent) esContent.style.display = 'none';
             if (frContent) frContent.style.display = 'none';
@@ -104,27 +129,41 @@
             if (lang === 'es' && esContent) esContent.style.display = 'block';
             if (lang === 'fr' && frContent) frContent.style.display = 'block';
 
+            updateNavigation(lang);
             updateActiveButton(lang);
+        }
+
+        function updateNavigation(lang) {
+            const nav = navTranslations[lang] || navTranslations.en;
+
+            const homeLink = document.getElementById('nav-home');
+            const academicLink = document.getElementById('nav-academic');
+            const aboutLink = document.getElementById('nav-about');
+            const futureLink = document.getElementById('nav-future');
+            const cvLink = document.getElementById('nav-cv');
+
+            if (homeLink) homeLink.textContent = nav.home;
+            if (academicLink) academicLink.textContent = nav.academic;
+            if (aboutLink) aboutLink.textContent = nav.about;
+            if (futureLink) futureLink.textContent = nav.future;
+            if (cvLink) cvLink.textContent = nav.cv;
         }
 
         function updateActiveButton(lang) {
             const btnEn = document.getElementById('btn-en');
             const btnEs = document.getElementById('btn-es');
             const btnFr = document.getElementById('btn-fr');
-            
+           
             if (!btnEn || !btnEs || !btnFr) return;
-
             [btnEn, btnEs, btnFr].forEach(btn => {
                 btn.style.background = 'white';
                 btn.style.borderColor = '#444';
                 btn.style.color = '#333';
             });
-
             let activeBtn = null;
             if (lang === 'en') activeBtn = btnEn;
             else if (lang === 'es') activeBtn = btnEs;
             else if (lang === 'fr') activeBtn = btnFr;
-
             if (activeBtn) {
                 activeBtn.style.background = '#e6f2ff';
                 activeBtn.style.borderColor = '#0066cc';
@@ -138,11 +177,11 @@
                 if (browserLang.startsWith('es')) currentLang = 'es';
                 else if (browserLang.startsWith('fr')) currentLang = 'fr';
             }
-            
+           
             const enContent = document.getElementById('content-en');
             const esContent = document.getElementById('content-es');
             const frContent = document.getElementById('content-fr');
-            
+           
             if (enContent) enContent.style.display = 'none';
             if (esContent) esContent.style.display = 'none';
             if (frContent) frContent.style.display = 'none';
@@ -152,9 +191,10 @@
             else if (currentLang === 'fr' && frContent) frContent.style.display = 'block';
             else if (enContent) enContent.style.display = 'block';
 
+            updateNavigation(currentLang);
             updateActiveButton(currentLang);
         });
     </script>
-    
+   
 </body>
 </html>
