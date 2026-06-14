@@ -9,21 +9,147 @@
 </head> 
 
 <body style="max-width: 80%; margin: 20px auto; padding: 0 10px;">
-    <h1 style="font-family: Georgia; font-size: 45px; text-align: center;">Future</h1>
-
-     <nav style="text-align: center; font-size: 36px;">
-     <a href="index.html">Home Page</a> |  <a href="academic_background.html">Academic Background</a> | <a href="about.html">About Me</a> | <a href="future.html">Future</a> | <a href="CV.html">CV</a> 
-    </nav>    
-
-    <img src="chico.jpeg" alt="A photo of me" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
+<h1 style="font-family: Georgia; font-size: 45px; text-align: center; margin-bottom: 10px;">Future</h1>
     
-     <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px;; max-width: 100%; text-indent: 0;"> 
-        After completing my PhD I intend to transition to the private sector and pursue a career in artificial intellgience and/or data center planning and management. 
-        The ubiquity of artificial intelligence will have profound implications for areas such as transportation, energy, healthcare and 
-        science. There will be an exponential growth on the demand of cloud services as well as on the training and inference of 
-        A.I. models. Data center infrastructure will play a critical role in this process. 
-        The market size of data centers is expected to be $500 billion USD by the year 2030 and the market size of A.I. to be $1.2 trillion USD by that same year. 
-        The opportunities to transform our economies and our quality of life are limitless. The future looks bright.</p>
+    <!-- Navigation -->
+    <nav style="text-align: center; font-size: 36px; margin-bottom: 15px;">
+        <a href="index.html">Home Page</a> | 
+        <a href="academic_background.html">Academic Background</a> | 
+        <a href="about.html">About Me</a> | 
+        <a href="future.html">Future</a> | 
+        <a href="CV.html">CV</a>
+    </nav>
+    
+    <!-- Language Switcher -->
+    <div style="text-align: right; margin: 10px auto 25px; max-width: 90%;">
+        <button onclick="switchLanguage('en')" id="btn-en"
+                style="font-size: 16px; padding: 8px 15px; margin: 0 2px; border: 2px solid #444; border-radius: 30px; background: white; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
+                title="Switch to English">
+            🇬🇧 English
+        </button>
+        <button onclick="switchLanguage('es')" id="btn-es"
+                style="font-size: 16px; padding: 8px 15px; margin: 0 2px; border: 2px solid #444; border-radius: 30px; background: white; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
+                title="Cambiar a Español">
+            🇲🇽 Español
+        </button>
+        <button onclick="switchLanguage('fr')" id="btn-fr"
+                style="font-size: 16px; padding: 8px 15px; margin: 0 2px; border: 2px solid #444; border-radius: 30px; background: white; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
+                title="Passer en Français">
+            🇫🇷 Français
+        </button>
+    </div>
+  
+    <div style="max-width: 90%; margin: 0px auto;">
+       
+        <!-- ==================== ENGLISH CONTENT ==================== -->
+        <div id="content-en">
+            <img src="chico.jpeg" alt="A photo of me" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
+   
+            <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
+                After completing my PhD I intend to transition to the private sector and pursue a career in artificial intelligence and/or data center planning and management.
+                The ubiquity of artificial intelligence will have profound implications for areas such as transportation, energy, healthcare and science. There will be an exponential growth on the demand of cloud services as well as on the training and inference of A.I. models. Data center infrastructure will play a critical role in this process.
+                The market size of data centers is expected to be $500 billion USD by the year 2030 and the market size of A.I. to be $1.2 trillion USD by that same year.
+                The opportunities to transform our economies and our quality of life are limitless. The future looks bright.
+            </p>
+        </div>
 
+        <!-- ==================== SPANISH CONTENT ==================== -->
+        <div id="content-es" style="display: none;">
+            <img src="chico.jpeg" alt="Una foto mía" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
+   
+            <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
+                Después de completar mi doctorado, tengo la intención de hacer la transición al sector privado y seguir una carrera en inteligencia artificial y/o planificación y gestión de centros de datos.
+                La ubicuidad de la inteligencia artificial tendrá profundas implicaciones en áreas como el transporte, la energía, la atención médica y la ciencia. Habrá un crecimiento exponencial en la demanda de servicios en la nube, así como en el entrenamiento e inferencia de modelos de IA. La infraestructura de centros de datos jugará un papel crítico en este proceso.
+                Se espera que el tamaño del mercado de centros de datos alcance los 500 mil millones de dólares estadounidenses para el año 2030, y que el tamaño del mercado de IA sea de 1.2 billones de dólares estadounidenses para ese mismo año.
+                Las oportunidades para transformar nuestras economías y nuestra calidad de vida son ilimitadas. El futuro se ve brillante.
+            </p>
+        </div>
+
+        <!-- ==================== FRENCH CONTENT ==================== -->
+        <div id="content-fr" style="display: none;">
+            <img src="chico.jpeg" alt="Une photo de moi" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
+   
+            <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
+                Après avoir terminé mon doctorat, j’ai l’intention de faire la transition vers le secteur privé et de poursuivre une carrière dans l’intelligence artificielle et/ou la planification et la gestion de centres de données.
+                L’omniprésence de l’intelligence artificielle aura des implications profondes dans des domaines tels que les transports, l’énergie, les soins de santé et la science. Il y aura une croissance exponentielle de la demande de services cloud ainsi que de l’entraînement et de l’inférence des modèles d’IA. L’infrastructure des centres de données jouera un rôle critique dans ce processus.
+                La taille du marché des centres de données devrait atteindre 500 milliards de dollars américains d’ici 2030, et celle du marché de l’IA devrait atteindre 1 200 milliards de dollars américains la même année.
+                Les opportunités de transformer nos économies et notre qualité de vie sont illimitées. L’avenir s’annonce radieux.
+            </p>
+        </div>
+       
+    </div>
+   
+    <script>
+        // Language switcher for EN / ES / FR
+        let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+
+            const enContent = document.getElementById('content-en');
+            const esContent = document.getElementById('content-es');
+            const frContent = document.getElementById('content-fr');
+            
+            if (enContent) enContent.style.display = 'none';
+            if (esContent) esContent.style.display = 'none';
+            if (frContent) frContent.style.display = 'none';
+
+            if (lang === 'en' && enContent) enContent.style.display = 'block';
+            if (lang === 'es' && esContent) esContent.style.display = 'block';
+            if (lang === 'fr' && frContent) frContent.style.display = 'block';
+
+            updateActiveButton(lang);
+        }
+
+        function updateActiveButton(lang) {
+            const btnEn = document.getElementById('btn-en');
+            const btnEs = document.getElementById('btn-es');
+            const btnFr = document.getElementById('btn-fr');
+            
+            if (!btnEn || !btnEs || !btnFr) return;
+
+            [btnEn, btnEs, btnFr].forEach(btn => {
+                btn.style.background = 'white';
+                btn.style.borderColor = '#444';
+                btn.style.color = '#333';
+            });
+
+            let activeBtn = null;
+            if (lang === 'en') activeBtn = btnEn;
+            else if (lang === 'es') activeBtn = btnEs;
+            else if (lang === 'fr') activeBtn = btnFr;
+
+            if (activeBtn) {
+                activeBtn.style.background = '#e6f2ff';
+                activeBtn.style.borderColor = '#0066cc';
+                activeBtn.style.color = '#003366';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!localStorage.getItem('preferredLang')) {
+                const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+                if (browserLang.startsWith('es')) currentLang = 'es';
+                else if (browserLang.startsWith('fr')) currentLang = 'fr';
+            }
+            
+            const enContent = document.getElementById('content-en');
+            const esContent = document.getElementById('content-es');
+            const frContent = document.getElementById('content-fr');
+            
+            if (enContent) enContent.style.display = 'none';
+            if (esContent) esContent.style.display = 'none';
+            if (frContent) frContent.style.display = 'none';
+
+            if (currentLang === 'en' && enContent) enContent.style.display = 'block';
+            else if (currentLang === 'es' && esContent) esContent.style.display = 'block';
+            else if (currentLang === 'fr' && frContent) frContent.style.display = 'block';
+            else if (enContent) enContent.style.display = 'block';
+
+            updateActiveButton(currentLang);
+        });
+    </script>
+    
 </body>
 </html>
