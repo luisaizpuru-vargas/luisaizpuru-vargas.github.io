@@ -10,7 +10,7 @@
 
 <body style="max-width: 80%; margin: 20px auto; padding: 0 10px;">
 
-    <!-- Language Switcher -->
+  <!-- Language Switcher -->
     <div style="text-align: right; margin: 10px auto 25px; max-width: 90%;">
         <button onclick="switchLanguage('en')" id="btn-en"
                 style="font-size: 16px; padding: 8px 15px; margin: 0 2px; border: 2px solid #444; border-radius: 30px; background: white; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
@@ -27,26 +27,27 @@
                 title="Passer en Français">
             🇫🇷 Français
         </button>
-    </div>    
+    </div>
     
 <h1 style="font-family: Georgia; font-size: 45px; text-align: center; margin-bottom: 10px;">Future</h1>
-    
-    <!-- Navigation -->
+   
+    <!-- Navigation with IDs -->
     <nav style="text-align: center; font-size: 36px; margin-bottom: 15px;">
-        <a href="index.html">Home Page</a> | 
-        <a href="academic_background.html">Academic Background</a> | 
-        <a href="about.html">About Me</a> | 
-        <a href="future.html">Future</a> | 
-        <a href="CV.html">CV</a>
+        <a href="index.html" id="nav-home">Home Page</a> |
+        <a href="academic_background.html" id="nav-academic">Academic Background</a> |
+        <a href="about.html" id="nav-about">About Me</a> |
+        <a href="future.html" id="nav-future">Future</a> |
+        <a href="CV.html" id="nav-cv">CV</a>
     </nav>
-    
-  
+   
+
+ 
     <div style="max-width: 90%; margin: 0px auto;">
-       
+      
         <!-- ==================== ENGLISH CONTENT ==================== -->
         <div id="content-en">
             <img src="chico.jpeg" alt="A photo of me" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
                 After completing my PhD I intend to transition to the private sector and pursue a career in artificial intelligence and/or data center planning and management.
                 The ubiquity of artificial intelligence will have profound implications for areas such as transportation, energy, healthcare and science. There will be an exponential growth on the demand of cloud services as well as on the training and inference of A.I. models. Data center infrastructure will play a critical role in this process.
@@ -58,7 +59,7 @@
         <!-- ==================== SPANISH CONTENT ==================== -->
         <div id="content-es" style="display: none;">
             <img src="chico.jpeg" alt="Una foto mía" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
                 Después de completar mi doctorado, tengo la intención de hacer la transición al sector privado y seguir una carrera en inteligencia artificial y/o planificación y gestión de centros de datos.
                 La ubicuidad de la inteligencia artificial tendrá profundas implicaciones en áreas como el transporte, la energía, la atención médica y la ciencia. Habrá un crecimiento exponencial en la demanda de servicios en la nube, así como en el entrenamiento e inferencia de modelos de IA. La infraestructura de centros de datos jugará un papel crítico en este proceso.
@@ -70,7 +71,7 @@
         <!-- ==================== FRENCH CONTENT ==================== -->
         <div id="content-fr" style="display: none;">
             <img src="chico.jpeg" alt="Une photo de moi" style="display: block; margin: 40px auto; width: 1000px; max-width: 80%; height: auto;">
-   
+  
             <p style="font-family: Arial; font-size: 28px; text-align: justify; margin-top: 0; margin-right: 120px; margin-bottom: 90px; margin-left: 120px; max-width: 100%; text-indent: 0;">
                 Après avoir terminé mon doctorat, j’ai l’intention de faire la transition vers le secteur privé et de poursuivre une carrière dans l’intelligence artificielle et/ou la planification et la gestion de centres de données.
                 L’omniprésence de l’intelligence artificielle aura des implications profondes dans des domaines tels que les transports, l’énergie, les soins de santé et la science. Il y aura une croissance exponentielle de la demande de services cloud ainsi que de l’entraînement et de l’inférence des modèles d’IA. L’infrastructure des centres de données jouera un rôle critique dans ce processus.
@@ -78,12 +79,36 @@
                 Les opportunités de transformer nos économies et notre qualité de vie sont illimitées. L’avenir s’annonce radieux.
             </p>
         </div>
-       
+      
     </div>
-   
+  
     <script>
-        // Language switcher for EN / ES / FR
+        // ==================== LANGUAGE SWITCHER + TRANSLATED NAV ====================
         let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+        const navTranslations = {
+            en: {
+                home: "Home Page",
+                academic: "Academic Background",
+                about: "About Me",
+                future: "Future",
+                cv: "CV"
+            },
+            es: {
+                home: "Página Principal",
+                academic: "Formación Académica",
+                about: "Sobre Mí",
+                future: "Futuro",
+                cv: "Currículum"
+            },
+            fr: {
+                home: "Page d'accueil",
+                academic: "Parcours académique",
+                about: "À propos de moi",
+                future: "Avenir",
+                cv: "CV"
+            }
+        };
 
         function switchLanguage(lang) {
             currentLang = lang;
@@ -92,7 +117,7 @@
             const enContent = document.getElementById('content-en');
             const esContent = document.getElementById('content-es');
             const frContent = document.getElementById('content-fr');
-            
+           
             if (enContent) enContent.style.display = 'none';
             if (esContent) esContent.style.display = 'none';
             if (frContent) frContent.style.display = 'none';
@@ -101,27 +126,41 @@
             if (lang === 'es' && esContent) esContent.style.display = 'block';
             if (lang === 'fr' && frContent) frContent.style.display = 'block';
 
+            updateNavigation(lang);
             updateActiveButton(lang);
+        }
+
+        function updateNavigation(lang) {
+            const nav = navTranslations[lang] || navTranslations.en;
+
+            const homeLink = document.getElementById('nav-home');
+            const academicLink = document.getElementById('nav-academic');
+            const aboutLink = document.getElementById('nav-about');
+            const futureLink = document.getElementById('nav-future');
+            const cvLink = document.getElementById('nav-cv');
+
+            if (homeLink) homeLink.textContent = nav.home;
+            if (academicLink) academicLink.textContent = nav.academic;
+            if (aboutLink) aboutLink.textContent = nav.about;
+            if (futureLink) futureLink.textContent = nav.future;
+            if (cvLink) cvLink.textContent = nav.cv;
         }
 
         function updateActiveButton(lang) {
             const btnEn = document.getElementById('btn-en');
             const btnEs = document.getElementById('btn-es');
             const btnFr = document.getElementById('btn-fr');
-            
+           
             if (!btnEn || !btnEs || !btnFr) return;
-
             [btnEn, btnEs, btnFr].forEach(btn => {
                 btn.style.background = 'white';
                 btn.style.borderColor = '#444';
                 btn.style.color = '#333';
             });
-
             let activeBtn = null;
             if (lang === 'en') activeBtn = btnEn;
             else if (lang === 'es') activeBtn = btnEs;
             else if (lang === 'fr') activeBtn = btnFr;
-
             if (activeBtn) {
                 activeBtn.style.background = '#e6f2ff';
                 activeBtn.style.borderColor = '#0066cc';
@@ -135,11 +174,11 @@
                 if (browserLang.startsWith('es')) currentLang = 'es';
                 else if (browserLang.startsWith('fr')) currentLang = 'fr';
             }
-            
+           
             const enContent = document.getElementById('content-en');
             const esContent = document.getElementById('content-es');
             const frContent = document.getElementById('content-fr');
-            
+           
             if (enContent) enContent.style.display = 'none';
             if (esContent) esContent.style.display = 'none';
             if (frContent) frContent.style.display = 'none';
@@ -149,9 +188,10 @@
             else if (currentLang === 'fr' && frContent) frContent.style.display = 'block';
             else if (enContent) enContent.style.display = 'block';
 
+            updateNavigation(currentLang);
             updateActiveButton(currentLang);
         });
     </script>
-    
+   
 </body>
 </html>
