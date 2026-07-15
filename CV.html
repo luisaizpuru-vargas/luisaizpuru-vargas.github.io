@@ -7,12 +7,12 @@
     <meta name="author" content="Luis Lauro Aizpuru Vargas">
     <meta name="robots" content="index, follow">
 
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body style="max-width: 80%; margin: 20px auto; padding: 0 10px;">
 
-    <!-- Language Switcher (unchanged) -->
+    <!-- Language Switcher -->
     <div style="text-align: right; margin: 10px auto 25px; max-width: 90%;">
         <button onclick="switchLanguage('en')" id="btn-en"
                 style="font-size: 16px; padding: 8px 15px; margin: 0 2px; border: 2px solid #444; border-radius: 30px; background: white; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);"
@@ -33,7 +33,7 @@
 
     <h1 style="font-family: Georgia; font-size: 45px; text-align: center; margin-bottom: 10px;">Curriculum Vitae</h1>
 
-    <!-- Navigation (unchanged) -->
+    <!-- Navigation -->
     <nav style="text-align: center; font-size: 36px; margin-bottom: 15px;">
         <a href="index.html" id="nav-home">Home Page</a> |
         <a href="academic_background.html" id="nav-academic">Academic Background</a> |
@@ -56,12 +56,11 @@
                 For any enquiries you can reach me at: <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
 
-            <!-- NEW: Professional Profiles -->
+            <!-- Professional Profiles -->
             <div style="text-align: center; margin: 40px 0 80px;">
                 <p style="font-family: Arial; font-size: 26px; margin-bottom: 20px; font-weight: bold;">Professional Profiles</p>
                 
                 <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; max-width: 750px; margin: 0 auto;">
-                    <!-- ORCID -->
                     <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" rel="noopener noreferrer"
                        style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #222; font-size: 22px; padding: 12px 24px; border: 2px solid #ddd; border-radius: 12px; transition: all 0.2s;"
                        aria-label="ORCID profile">
@@ -69,7 +68,6 @@
                         <span><strong>ORCID</strong></span>
                     </a>
 
-                    <!-- Google Scholar -->
                     <a href="https://scholar.google.com/citations?user=YOUR-SCHOLAR-ID&hl=en" target="_blank" rel="noopener noreferrer"
                        style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #222; font-size: 22px; padding: 12px 24px; border: 2px solid #ddd; border-radius: 12px; transition: all 0.2s;"
                        aria-label="Google Scholar profile">
@@ -77,7 +75,6 @@
                         <span><strong>Google Scholar</strong></span>
                     </a>
 
-                    <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank" rel="noopener noreferrer"
                        style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #222; font-size: 22px; padding: 12px 24px; border: 2px solid #ddd; border-radius: 12px; transition: all 0.2s;"
                        aria-label="LinkedIn profile">
@@ -100,7 +97,7 @@
                 Para cualquier consulta puedes contactarme en: <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
 
-            <!-- NEW: Professional Profiles (Spanish) -->
+            <!-- Professional Profiles (Spanish) -->
             <div style="text-align: center; margin: 40px 0 80px;">
                 <p style="font-family: Arial; font-size: 26px; margin-bottom: 20px; font-weight: bold;">Perfiles Profesionales</p>
                 
@@ -141,7 +138,7 @@
                 Pour toute demande, vous pouvez me contacter à : <a href="mailto:A01195658@tec.mx">A01195658@tec.mx</a>
             </p>
 
-            <!-- NEW: Professional Profiles (French) -->
+            <!-- Professional Profiles (French) -->
             <div style="text-align: center; margin: 40px 0 80px;">
                 <p style="font-family: Arial; font-size: 26px; margin-bottom: 20px; font-weight: bold;">Profils Professionnels</p>
                 
@@ -172,9 +169,89 @@
 
     </div>
 
-    <!-- JavaScript (unchanged) -->
+    <!-- ==================== LANGUAGE SWITCHER SCRIPT ==================== -->
     <script>
-        // ... (keep your existing language switcher script exactly as it is)
+        let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+        const navTranslations = {
+            en: { home: "Home Page", academic: "Academic Background", about: "About Me", future: "Future", cv: "CV" },
+            es: { home: "Página Principal", academic: "Formación Académica", about: "Sobre Mí", future: "Futuro", cv: "Currículum" },
+            fr: { home: "Page d'accueil", academic: "Parcours académique", about: "À propos de moi", future: "Avenir", cv: "CV" }
+        };
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('preferredLang', lang);
+
+            // Hide all content
+            document.getElementById('content-en').style.display = 'none';
+            document.getElementById('content-es').style.display = 'none';
+            document.getElementById('content-fr').style.display = 'none';
+
+            // Show selected language
+            if (lang === 'en') document.getElementById('content-en').style.display = 'block';
+            else if (lang === 'es') document.getElementById('content-es').style.display = 'block';
+            else if (lang === 'fr') document.getElementById('content-fr').style.display = 'block';
+
+            updateNavigation(lang);
+            updateActiveButton(lang);
+        }
+
+        function updateNavigation(lang) {
+            const nav = navTranslations[lang] || navTranslations.en;
+            document.getElementById('nav-home').textContent = nav.home;
+            document.getElementById('nav-academic').textContent = nav.academic;
+            document.getElementById('nav-about').textContent = nav.about;
+            document.getElementById('nav-future').textContent = nav.future;
+            document.getElementById('nav-cv').textContent = nav.cv;
+        }
+
+        function updateActiveButton(lang) {
+            const btnEn = document.getElementById('btn-en');
+            const btnEs = document.getElementById('btn-es');
+            const btnFr = document.getElementById('btn-fr');
+
+            [btnEn, btnEs, btnFr].forEach(btn => {
+                btn.style.background = 'white';
+                btn.style.borderColor = '#444';
+                btn.style.color = '#333';
+            });
+
+            let activeBtn = null;
+            if (lang === 'en') activeBtn = btnEn;
+            else if (lang === 'es') activeBtn = btnEs;
+            else if (lang === 'fr') activeBtn = btnFr;
+
+            if (activeBtn) {
+                activeBtn.style.background = '#e6f2ff';
+                activeBtn.style.borderColor = '#0066cc';
+                activeBtn.style.color = '#003366';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-detect language if not set
+            if (!localStorage.getItem('preferredLang')) {
+                const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+                if (browserLang.startsWith('es')) currentLang = 'es';
+                else if (browserLang.startsWith('fr')) currentLang = 'fr';
+            }
+
+            // Hide all
+            document.getElementById('content-en').style.display = 'none';
+            document.getElementById('content-es').style.display = 'none';
+            document.getElementById('content-fr').style.display = 'none';
+
+            // Show current language
+            if (currentLang === 'en') document.getElementById('content-en').style.display = 'block';
+            else if (currentLang === 'es') document.getElementById('content-es').style.display = 'block';
+            else if (currentLang === 'fr') document.getElementById('content-fr').style.display = 'block';
+            else document.getElementById('content-en').style.display = 'block';
+
+            updateNavigation(currentLang);
+            updateActiveButton(currentLang);
+        });
     </script>
 
 </body>
